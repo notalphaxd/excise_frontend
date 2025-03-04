@@ -1,0 +1,153 @@
+<div class="page-container">
+  
+    <!--TERMS OF USE-->
+    <div *ngIf="page === 'terms-of-use'">
+    <mat-card class = "terms-of-use grid-card">
+    <mat-card-header>Terms of Use</mat-card-header>
+    <mat-card-content class = "card-container">
+      <p>This Portal is designed, developed and hosted by Excise Department, Government of Sikkim with technical support from National Informatics Centre, Government of India.<br><br>
+
+        Though all efforts have been made to ensure the accuracy and currency of the content on this Portal, the same should not be construed as a statement of law or used for any legal purposes. Excise Department accepts no responsibility in relation to the accuracy, completeness, usefulness or otherwise, of the contents. Users are advised to verify/check any information with the relevant Government department(s) and/or other source(s), and to obtain any appropriate professional advice before acting on the information provided in the Portal.<br><br>
+        
+        In no event will the Excise Department be liable for any expense, loss or damage including, without limitation, indirect or consequential loss or damage, or any expense, loss or damage whatsoever arising from use, or loss of use, of data, arising out of or in connection with the use of this Portal.<br><br>
+        
+        Links to other websites that have been included on this Portal are provided for public convenience only. Excise Department is not responsible for the contents or reliability of linked websites and does not necessarily endorse the view expressed within them. We cannot guarantee the availability of such linked pages at all times.<br><br>
+        
+        These terms and conditions shall be governed by and construed in accordance with the Indian Laws. Any dispute arising under these terms and conditions shall be subject to the exclusive jurisdiction of the courts of India.</p>
+      
+    </mat-card-content>
+    </mat-card>
+    </div>
+
+    <!--LINKING POLICY-->
+    <div *ngIf="page === 'linking-policy'">
+    <mat-card class = "linking-policy grid-card">
+      <mat-card-header>Linking Policy</mat-card-header>
+      <mat-card-content class = "card-container">
+        <p>Links to external websites/portals<br><br>
+
+          At many places in this Portal, you shall find links to other websites/portals. This links have been placed for your convenience. Excise Department is not responsible for the contents and reliability of the linked websites and does not necessarily endorse the views expressed in them. Mere presence of the link or its listing on this Portal should not be assumed as endorsement of any kind. We can not guarantee that these links will work all the time and we have no control over availability of linked pages.<br><br>
+          
+          
+          Links to Excise Portal by other websites<br><br>
+          
+          We do not object to you linking directly to the information that is hosted on this Portal and no prior permission is required for the same. However, we would like you to inform us about any links provided to this Portal so that you can be informed of any changes or updations therein. Also, we do not permit our pages to be loaded into frames on your site. The pages belonging to this Portal must load into a newly opened browser window of the User.</p>
+        
+      </mat-card-content>
+      </mat-card>
+    </div>
+  
+      <!--COPYRIGHT POLICY-->
+      <div *ngIf="page === 'copyright-policy'">
+      <mat-card class = "copyright-policy grid-card">
+        <mat-card-header>Copyright Policy</mat-card-header>
+        <mat-card-content class = "card-container">
+          <p>Material featured on this Portal may be reproduced free of charge after taking proper permission by sending a mail to us. However, the material has to be reproduced accurately and not to be used in a derogatory manner or in a misleading context. Wherever the material is being published or issued to others, the source must be prominently acknowledged. However, the permission to reproduce this material shall not extend to any material which is identified as being copyright of a third party. Authorisation to reproduce such material must be obtained from the departments/copyright holders concerned.</p></mat-card-content>
+        </mat-card>
+      </div>
+
+
+        <div *ngIf="page === 'privacy-policy'">
+        <mat-card class = "privacy-policy grid-card">
+          <mat-card-header>Privacy Policy</mat-card-header>
+          <mat-card-content class = "card-container">
+            <p></p>Excise Portal and apps based on Excise Portal such as Windows 8 app does not automatically capture any specific personal information from you, (like name, phone number or e-mail address), that allows us to identify you individually.<br><br>
+
+            If the Excise Portal requests you to provide personal information, you will be informed for the particular purposes for which the information is gathered and adequate security measures will be taken to protect your personal information.<br><br>
+            
+            We do not sell or share any personally identifiable information volunteered on the Excise Portal site to any third party (public/private). Any information provided to this Portal will be protected from loss, misuse, unauthorized access or disclosure, alteration, or destruction.<br><br>
+            
+            We gather certain information about the User, such as Internet protocol (IP) addresses, domain name, browser type, operating system, the date and time of the visit and the pages visited. We make no attempt to link these addresses with the identity of individuals visiting our site unless an attempt to damage the site has been detected</mat-card-content>
+        </mat-card>
+        </div>
+
+        <!--LEGAL DISCLAIMER-->
+        <div *ngIf="page === 'legal-disclaimer'">
+        <mat-card class = "legal-disclaimer grid-card">
+          <mat-card-header>Legal Disclaimer</mat-card-header>
+          <mat-card-content class = "card-container">
+            <p>The information provided by Excise Department, Government of Sikkim on <a href="https://excise.sikkim.gov.in">https://excise.sikkim.gov.in</a> is for general informational purposes only. All information on the Site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site. <br>
+              <br> UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE SITE OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE. YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY AT YOUR OWN RISK.</p></mat-card-content>
+          </mat-card>
+        </div>
+
+          <!--CONTACT US-->
+        <div *ngIf="page === 'contact-us'">
+          <mat-card class="contact-us grid-card" >
+            <mat-card-header>
+              CONTACT US
+            </mat-card-header>
+          
+            <mat-tab-group [(selectedIndex)]="selectedTab">
+              <mat-tab label="Website Nodal Officer"></mat-tab>
+              <mat-tab label="Public Information Officers"></mat-tab>
+              <mat-tab label="Directorate & District Officials"></mat-tab>
+              <mat-tab label="Grievance Redressal Officer"></mat-tab>
+            </mat-tab-group>
+          
+            <mat-card-content>
+              <div *ngIf="selectedTab === 0" class="web-nodal-officer">
+                <div class="heading">
+                  IT CELL,<br>
+                  Excise Department
+                </div>
+                <div class="contact">
+                  <div class="phone">
+                    <img src="assets/images/footer/links/phone.png">
+                    <div class="text">(035) 9220-3963</div>
+                  </div>
+                  <div class="email">
+                    <img src="assets/images/footer/links/email.png">
+                    <div class="text">
+                      helpdesk-excise&#64;sikkim.gov.in
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+              <div *ngIf="selectedTab === 1" class="public-info-officers">
+                <mat-card-content>
+              
+                      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                      <ng-container matColumnDef="officerName">
+                        <th mat-header-cell *matHeaderCellDef> Officer Name </th>
+                        <td mat-cell *matCellDef="let stats"> {{stats.officerName}} </td>
+                      </ng-container>
+                    
+                      <ng-container matColumnDef="designation">
+                        <th mat-header-cell *matHeaderCellDef> Designation </th>
+                        <td mat-cell *matCellDef="let hq"> {{hq.designation}} </td>
+                      </ng-container>
+                
+                      <ng-container matColumnDef="address">
+                        <th mat-header-cell *matHeaderCellDef> Address </th>
+                        <td mat-cell *matCellDef="let hq"> {{hq.address}} </td>
+                      </ng-container>
+                
+                      <ng-container matColumnDef="phoneNumber">
+                        <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+                        <td mat-cell *matCellDef="let hq"> {{hq.phoneNumber}} </td>
+                      </ng-container>
+                    
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </mat-card-content>
+              
+              </div>
+          
+              <div *ngIf="selectedTab === 2" class="directorate-officials">
+                <p>Directorate & District Officials content goes here...</p>
+              </div>
+          
+              <div *ngIf="selectedTab === 3" class="grievance-redressal-officer">
+                <p>Grievance Redressal Officer content goes here...</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          </div>
+          
+
+</div>
+
