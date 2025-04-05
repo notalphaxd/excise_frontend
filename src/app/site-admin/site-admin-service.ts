@@ -133,22 +133,7 @@ export class SiteAdminService {
   deleteSalesmanBarman(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/salesmanbarman/delete/${id}/`);
   }
-  // Salesman Barman Documents
-  getSalesmanBarmanDocuments(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/salesmanbarman/document/list/`);
-  }
-  createSalesmanBarmanDocument(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/salesmanbarman/document/create/`, data);
-  }
-  getSalesmanBarmanDocumentDetail(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/salesmanbarman/document/detail/${id}/`);
-  }
-  updateSalesmanBarmanDocument(id: number, changes: Partial<any>): Observable<any> {
-    return this.http.put(`${this.apiUrl}/salesmanbarman/document/update/${id}/`, changes);
-  }
-  deleteSalesmanBarmanDocument(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/salesmanbarman/document/delete/${id}/`);
-  }
+ 
 
   // Company
   getCompanies(): Observable<any> {

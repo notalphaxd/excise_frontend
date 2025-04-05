@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { MaterialModule } from '../../../../material.module';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { SiteAdminService } from '../../../site-admin-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-submit-application',
@@ -10,8 +11,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './submit-application.component.scss'
 })
 export class SubmitApplicationComponent {
-
   @Output() back = new EventEmitter<void>();
+
+  private siteAdminService = inject(SiteAdminService);
+  private router = inject(Router);
 
   get licenseDetails() {
     return this.getGroupedEntries('licenseDetails');
@@ -24,17 +27,16 @@ export class SubmitApplicationComponent {
   get uploadedDocuments() {
     const storedDocs = sessionStorage.getItem('uploadedDocuments');
     if (!storedDocs) return [];
-  
+
     try {
       const parsedDocs = JSON.parse(storedDocs);
-      
-      // Convert the object into an array of { key: "Document Type", ...fileObject }
       return Object.entries(parsedDocs).map(([key, fileObj]: [string, any]) => ({
-        key,  // The document type (e.g., "Passport Size Photo")
+        key,
         name: fileObj.name,
         type: fileObj.type,
         size: fileObj.size,
-        fileUrl: fileObj.fileUrl || ''  // Ensure fileUrl exists if saved
+        fileUrl: fileObj.fileUrl || '',
+        file: fileObj.file
       }));
     } catch (error) {
       console.error("Error parsing uploadedDocuments:", error);
@@ -67,8 +69,49 @@ export class SubmitApplicationComponent {
     return key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()).trim();
   }
 
-  submit() {
+  async submit() {
+    const licenseDetails = JSON.parse(sessionStorage.getItem('licenseDetails') || '{}');
+    const personDetails = JSON.parse(sessionStorage.getItem('personDetails') || '{}');
+    const uploadedDocuments = this.uploadedDocuments;
 
+    const documents: { [key: string]: string } = {};
+
+    for (const doc of uploadedDocuments) {
+      if (doc.file) {
+        const base64 = await this.convertToBase64(doc.file);
+        documents[doc.key] = base64;
+      }
+    }
+
+    const requestData = {
+      ...licenseDetails,
+      ...personDetails,
+      ...documents
+    };
+
+    this.siteAdminService.createSalesmanBarman(requestData).subscribe({
+      next: () => {
+        alert('Application submitted successfully!');
+        sessionStorage.clear();
+        this.router.navigate(['/site-admin/salesman-barman']);
+      },
+      error: (err) => {
+        console.error('Submission failed:', err);
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  }
+
+  private convertToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        resolve(result.split(',')[1]);
+      };
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(file);
+    });
   }
 
   goBack() {
